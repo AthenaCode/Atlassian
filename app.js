@@ -20,10 +20,19 @@ var findData = function() {
 		 console.log(parsedData)
 		});
 	}	
+	this.dataByStoryIssueType = function(){
+		fs.readFile('exampleData/dataByStoryIssueType.js', 'utf8',(err, data) => {
+		  var parsedData = JSON.parse(data)
+		  if (err){
+		  	throw err;
+		  } 
+		 console.log(parsedData)
+		});
+	}	
 }
 
 findData.prototype.isWhatTypeOfData = function(){
-
+	
 }
 
 findData.prototype.DataNotFound = function (){
@@ -33,7 +42,8 @@ findData.prototype.DataNotFound = function (){
 findData.prototype.search = function(){
 	// this.allData();
 	// this.DataNotFound();
-	this.dataByBugIssueType();
+	//this.dataByBugIssueType();
+	this.dataByStoryIssueType();
 }
 
 
