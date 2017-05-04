@@ -43,7 +43,7 @@ findData.prototype.findEstimateForAll = function(){
 					estimate = +estimate + +parsedData[i].estimate;
 				}
 			}
-		console.log('This is estimate:', estimate)
+		console.log('The total estimate for all issues is:', estimate)
 	})
 }
 
@@ -57,7 +57,7 @@ findData.prototype.findEstimateForBug = function(){
 		for(var i = 0; i < parsedData.length; i++){
 				estimate = +estimate + +parsedData[i].estimate;
 			}
-		console.log('This is estimate:', estimate)
+		console.log('The issue bug estimate is', estimate);
 	})
 }
 
@@ -71,7 +71,7 @@ findData.prototype.findEstimateForStory = function(){
 		for(var i = 0; i < parsedData.length; i++){
 				estimate = +estimate + +parsedData[i].estimate;
 			}
-		console.log('This is estimate:', estimate)
+		console.log('The issue story estimate is', estimate);
 	})
 }
 
@@ -80,14 +80,27 @@ findData.prototype.dataNotFound = function (){
 } 
 
 findData.prototype.prompt = function(){
-	var ask = prompt.question('What kind of data are you looking for? Type in all, bug, or story to see the issues estimate time.');
-	
+	var ask = prompt.question('What are you looking for?');
+	if(ask === 'all'){
+		this.findEstimateForAll();
+	} else if (ask === 'bug'){
+		this.findEstimateForBug();
+	} else if (ask === 'story'){
+		this.findEstimateForStory();
+	} else if (ask === 'allData'){
+		this.allData();
+	} else if (ask === 'bugData'){
+		this.dataByBugIssueType();
+	} else if (ask === 'storyData'){
+		this.dataByStoryIssueType();	
+	} else {
+		this.dataNotFound();
+	}
 }
 
 
 findData.prototype.search = function(){
-	//this.prompt();	
-	this.findEstimateForAll();
+	this.prompt();	
 }
 
 var query = new findData();
