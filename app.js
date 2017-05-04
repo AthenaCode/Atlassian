@@ -76,7 +76,7 @@ findData.prototype.findEstimateForStory = function(){
 }
 
 findData.prototype.dataNotFound = function (){
-	console.log('Data not found, please try another query');
+	console.log('Data not found, please try another query.');
 } 
 
 findData.prototype.prompt = function(){
